@@ -3,9 +3,9 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract Kebab {
     mapping(string => uint256) public funds;
-    event Donation(string _donorid, string _recipientid, uint256 _amount);
+    event Donation(string _donorid, string _charityid, uint256 _amount);
     event Payment(
-        string _payer,
+        string _charityid,
         uint256 _amount,
         string _item,
         string _location
@@ -13,11 +13,11 @@ contract Kebab {
 
     function donate(
         string memory _donorid,
-        string memory _recipientid,
+        string memory _charityid,
         uint256 _amount
     ) public payable {
-        funds[_recipientid] += _amount;
-        emit Donation(_donorid, _recipientid, _amount);
+        funds[_charityid] += _amount;
+        emit Donation(_donorid, _charityid, _amount);
     }
 
     function pay(
