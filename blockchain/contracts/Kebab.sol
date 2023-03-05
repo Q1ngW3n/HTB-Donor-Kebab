@@ -30,4 +30,8 @@ contract Kebab {
         funds[_charityid] -= _amount;
         emit Payment(_charityid, _amount, _item, _location);
     }
+
+    function tearDown() public {
+        selfdestruct(payable(msg.sender));
+    }
 }
